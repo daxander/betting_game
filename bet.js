@@ -4,11 +4,16 @@ $(document).ready(function() {
 });
 
 function run(){
-     
+
   var wager = prompt("What is your wager between $5-$10?");
+  bank -= wager
+  $(document).ready(function() {
+  document.getElementById("bank").innerHTML = "Current Bank: $" + bank;
+  });
   var guess = prompt("Guess a number between 1 and 10");
   var random = Math.floor(Math.random()*11)
   var result = Math.abs(guess - random)
+
   $(document).ready(function() {
   document.getElementById("guess").innerHTML = "Your Guess: " + guess;
   });
@@ -26,7 +31,9 @@ function run(){
     break;
     default:
     alert("You lose $" + wager);
-    bank -= wager;
+    if (bank <= 0) {
+      bank = "You Lose";
+    }
     break;
   };
 
